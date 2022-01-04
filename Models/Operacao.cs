@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace TestInvestmentCart.Models
 {
     public class Operacao
     {
+        [Key]
         public int Id { get; set; }
         public Acao Acao { get; set; }
         public DateTime DtOperacao { get; set; }
@@ -11,7 +14,6 @@ namespace TestInvestmentCart.Models
         public double VlOperacao { get; set; }
 
         public Operacao(){
-            Id = 0;
             Acao = new Acao();
             DtOperacao = DateTime.Now;
             StOperacao = 'V';

@@ -2,6 +2,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TestInvestmentCart.Data.Interface;
 using TestInvestmentCart.Data.Mock;
+using TestInvestmentCart.DTO;
 using TestInvestmentCart.Models;
 using YahooFinanceApi;
 
@@ -14,11 +15,13 @@ namespace TestInvestmentCart.Controllers
 
         private readonly IOperacaoRepository _repository;
         private readonly IAcaoRepository _acaoRepository;
+        private readonly IMapper _mapper;
 
-        public OperacoesController(IOperacaoRepository repository, IAcaoRepository acaoRepository)
+        public OperacoesController(IOperacaoRepository repository, IAcaoRepository acaoRepository, IMapper mapper)
         {
             _repository = repository;
             _acaoRepository = acaoRepository;
+            _mapper = mapper;
         }
 
         [HttpPost("{acao&qtd&tipo}")]
@@ -31,10 +34,10 @@ namespace TestInvestmentCart.Controllers
 
         //GET api/operacoes
         [HttpGet]
-        public ActionResult<IEnumerable<Operacao>> ListarOperacoes(){
+        public ActionResult<IEnumerable<OperacaoReadDto>> ListarOperacoes(){
             var operacoes = _repository.ListOperacoes();
             if(operacoes != null){
-                return Ok(operacoes);
+                return Ok(_mapper.Map<IEnumerable<OperacaoReadDto>>(operacoes));
             }
             else{
                 return NotFound();  

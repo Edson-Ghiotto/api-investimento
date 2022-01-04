@@ -10,10 +10,12 @@ namespace TestInvestmentCart.Controllers
     public class AcoesController : ControllerBase
     {
         private readonly IAcaoRepository _repository;
+        private readonly IMapper _mapper;
 
-        public AcoesController(IAcaoRepository repository)
+        public AcoesController(IAcaoRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         //POST 
