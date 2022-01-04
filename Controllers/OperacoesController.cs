@@ -29,10 +29,17 @@ namespace TestInvestmentCart.Controllers
             _repository.AddOperacao(new Operacao(){Acao=acao, QtdOperacao=qtd, StOperacao=tipo, VlAcao=valorAcao, VlOperacao = CalcularValorOperacao(valorAcao, qtd)});
         }
 
+        //GET api/operacoes
         [HttpGet]
         public ActionResult<IEnumerable<Operacao>> ListarOperacoes(){
             var operacoes = _repository.ListOperacoes();
-            return Ok(operacoes);
+            if(operacoes != null){
+                return Ok(operacoes);
+            }
+            else{
+                return NotFound();  
+            }
+            
         }
 
         private double CalcularValorOperacao(double valor, int quantidade){

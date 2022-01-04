@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\edson\\Documents\\GitHub\\test-investment-cart\\TestInvestmentCart\\TestInvestmentCart.csproj",
+  "FilePath": "c:\\Users\\edson\\Documents\\GitHub\\api-investimento\\api-investimento.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",
@@ -16295,7 +16295,7 @@
     ],
     "CSharpLanguageVersion": 1000
   },
-  "RootNamespace": "TestInvestmentCart",
+  "RootNamespace": "api-investimento",
   "Documents": [],
   "SerializationFormat": "0.2"
 }

@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "dRR+4ReVMASVfXz5pbzsb0+3ZUPpmHavSlrKOcUa7Mo=",
-  "Source": "TestInvestmentCart",
-  "BasePath": "_content/TestInvestmentCart",
+  "Hash": "sYPmHW+lAh5nH+oYBeBAYTzAgpAcSsCSP+vXCmcALYQ=",
+  "Source": "api-investimento",
+  "BasePath": "_content/api-investimento",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
