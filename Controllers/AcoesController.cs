@@ -1,6 +1,8 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TestInvestmentCart.Data.Interface;
+using TestInvestmentCart.DTO;
+using TestInvestmentCart.Models;
 
 namespace TestInvestmentCart.Controllers
 {
@@ -20,14 +22,15 @@ namespace TestInvestmentCart.Controllers
 
         //POST 
         [HttpPost]
-        public ActionResult CadastrarAcao(string codigo, string razaoSocial){
-            try{
-                _repository.AddAcao(codigo, razaoSocial);
-                return Ok();
-            }
-            catch{
-                return Forbid();
-            }
+        public ActionResult <AcaoCreateDto> CadastrarAcao(AcaoCreateDto acao)
+        {
+            var acaoModel = _mapper.Map<Acao>(acao);
+
+            _repository.AddAcao(acaoModel);
+            _repository.SaveChanges();
+
+            return Ok(acaoModel);
+            
         }
     }
 }

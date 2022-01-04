@@ -5,11 +5,12 @@ namespace TestInvestmentCart.Data.Interface
 {
     public interface IAcaoRepository
     {
+        bool SaveChanges();
         Acao GetAcaoById(int id);
         
         Acao GetAcaoByCodigo(string codigo);
 
-        void AddAcao(string codigo, string razaoSocial);
+        void AddAcao(Acao acao);
         
     }
 }

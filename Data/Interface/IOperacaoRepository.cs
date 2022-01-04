@@ -5,7 +5,8 @@ namespace TestInvestmentCart.Data.Interface
 {
     public interface IOperacaoRepository
     {
-        Operacao GetOperOperacaoById(int id);
+        bool SaveChanges();
+        Operacao GetOperacaoById(int id);
         
         IEnumerable<Operacao> ListOperacoes();
 

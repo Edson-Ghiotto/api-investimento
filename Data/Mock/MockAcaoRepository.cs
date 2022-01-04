@@ -15,7 +15,12 @@ namespace TestInvestmentCart.Data.Mock
             return new Acao{Id=0,Codigo=codigo,RazaoSocial="Nome"};
         }
 
-        public void AddAcao(string codigo, string razaoSocial)
+        public void AddAcao(Acao acao)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SaveChanges()
         {
             throw new NotImplementedException();
         }

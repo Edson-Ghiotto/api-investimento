@@ -12,12 +12,15 @@ namespace TestInvestmentCart.Data
         }
         public void AddOperacao(Operacao operacao)
         {
-            _context.Database.EnsureCreatedAsync();
+            if(operacao == null){
+                throw new ArgumentNullException(nameof(operacao));
+            }
+            Console.Write(operacao.DtOperacao.GetType().ToString());
             _context.Operacoes.Add(operacao);
-            _context.SaveChangesAsync();
+            
         }
 
-        public Operacao GetOperOperacaoById(int id)
+        public Operacao GetOperacaoById(int id)
         {
             return _context.Operacoes.FirstOrDefault(x => x.Id == id);
         }
@@ -25,6 +28,11 @@ namespace TestInvestmentCart.Data
         public IEnumerable<Operacao> ListOperacoes()
         {
             return _context.Operacoes.ToList();
+        }
+
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
         }
     }
 }

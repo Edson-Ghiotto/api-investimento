@@ -21,11 +21,18 @@ namespace TestInvestmentCart.Data
             return _context.Acoes.FirstOrDefault(x => x.Codigo == codigo);
         }
 
-        public void AddAcao(string codigo, string razaoSocial)
+        public void AddAcao(Acao acao)
         {
-            _context.Database.EnsureCreatedAsync();
-            _context.Acoes.Add(new (){Codigo = codigo, RazaoSocial = razaoSocial});
-            _context.SaveChangesAsync();
+            if(acao == null){
+                throw new ArgumentNullException(nameof(acao));
+            }
+
+            _context.Acoes.Add(acao);
+        }
+
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
         }
     }
 }

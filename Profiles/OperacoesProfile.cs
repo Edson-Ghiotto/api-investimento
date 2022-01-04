@@ -9,6 +9,7 @@ namespace TestInvestmentCart.Profiles
         public OperacoesProfile()
         {
             CreateMap<Operacao, OperacaoReadDto>();
+            CreateMap<OperacaoCreateDto, Operacao>();
         }
     }
 }

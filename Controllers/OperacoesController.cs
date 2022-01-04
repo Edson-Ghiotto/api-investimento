@@ -24,19 +24,35 @@ namespace TestInvestmentCart.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost("{acao&qtd&tipo}")]
-        public void RegistrarOperacao(string codigo, int qtd, char tipo){
-            var acao = _acaoRepository.GetAcaoByCodigo(codigo);
-            var valorAcao = ObterCotacaoAcao(codigo);
+        [HttpPost]
+        public ActionResult <OperacaoCreateDto> RegistrarOperacao(OperacaoCreateDto operacao){
+
+            ObterCotacaoAcao("AAPL");
+
+            var operacaoModel = _mapper.Map<Operacao>(operacao);
+            var acao = _acaoRepository.GetAcaoById(operacao.AcaoId);
             
-            _repository.AddOperacao(new Operacao(){Acao=acao, QtdOperacao=qtd, StOperacao=tipo, VlAcao=valorAcao, VlOperacao = CalcularValorOperacao(valorAcao, qtd)});
+            var valorAcao = ObterCotacaoAcao(acao.Codigo);
+
+            operacaoModel.VlAcao = valorAcao;
+            operacaoModel.VlOperacao = CalcularValorOperacao(valorAcao,operacao.QtdOperacao);
+
+            try{
+                _repository.AddOperacao(operacaoModel);
+                _repository.SaveChanges();
+
+                return Ok(operacaoModel);
+            }
+            catch{
+                return Ok(operacaoModel);
+            }
         }
 
         //GET api/operacoes
         [HttpGet]
         public ActionResult<IEnumerable<OperacaoReadDto>> ListarOperacoes(){
             var operacoes = _repository.ListOperacoes();
-            if(operacoes != null){
+            if(operacoes != null && operacoes.Count() > 0){
                 return Ok(_mapper.Map<IEnumerable<OperacaoReadDto>>(operacoes));
             }
             else{
@@ -54,7 +70,7 @@ namespace TestInvestmentCart.Controllers
 
         private double ObterCotacaoAcao(string codigo){
             var securities = Yahoo.Symbols(codigo).Fields(Field.Symbol, Field.RegularMarketPrice, Field.FiftyTwoWeekHigh).QueryAsync();
-            var acao = securities.Result["AAPL"];
+            var acao = securities.Result[codigo];
             var preco = acao[Field.RegularMarketPrice];
             return preco;
         }

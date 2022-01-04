@@ -57,7 +57,7 @@ namespace TestInvestmentCart.Migrations
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("DtOperacao")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("date");
 
                     b.Property<int>("QtdOperacao")
                         .HasColumnType("integer");

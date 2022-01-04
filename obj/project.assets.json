@@ -6221,11 +6221,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\edson\\Documents\\GitHub\\api-investimento\\api-investimento.csproj",
+      "projectUniqueName": "C:\\Users\\edson\\Documents\\GitHub\\api-investimento\\api-investimento.csproj",
       "projectName": "api-investimento",
-      "projectPath": "c:\\Users\\edson\\Documents\\GitHub\\api-investimento\\api-investimento.csproj",
+      "projectPath": "C:\\Users\\edson\\Documents\\GitHub\\api-investimento\\api-investimento.csproj",
       "packagesPath": "C:\\Users\\edson\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\edson\\Documents\\GitHub\\api-investimento\\obj\\",
+      "outputPath": "C:\\Users\\edson\\Documents\\GitHub\\api-investimento\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\edson\\AppData\\Roaming\\NuGet\\NuGet.Config"

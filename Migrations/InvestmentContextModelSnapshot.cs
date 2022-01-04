@@ -40,7 +40,7 @@ namespace TestInvestmentCart.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Acoes");
+                    b.ToTable("Acoes", (string)null);
                 });
 
             modelBuilder.Entity("TestInvestmentCart.Models.Operacao", b =>
@@ -55,7 +55,7 @@ namespace TestInvestmentCart.Migrations
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("DtOperacao")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("date");
 
                     b.Property<int>("QtdOperacao")
                         .HasColumnType("integer");
@@ -73,7 +73,7 @@ namespace TestInvestmentCart.Migrations
 
                     b.HasIndex("AcaoId");
 
-                    b.ToTable("Operacoes");
+                    b.ToTable("Operacoes", (string)null);
                 });
 
             modelBuilder.Entity("TestInvestmentCart.Models.Operacao", b =>
