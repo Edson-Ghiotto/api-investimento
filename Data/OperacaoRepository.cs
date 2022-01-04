@@ -15,7 +15,7 @@ namespace TestInvestmentCart.Data
             if(operacao == null){
                 throw new ArgumentNullException(nameof(operacao));
             }
-            Console.Write(operacao.DtOperacao.GetType().ToString());
+            
             _context.Operacoes.Add(operacao);
             
         }

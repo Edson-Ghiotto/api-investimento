@@ -44,7 +44,7 @@ namespace TestInvestmentCart.Controllers
                 return Ok(operacaoModel);
             }
             catch{
-                return Ok(operacaoModel);
+                return BadRequest(operacaoModel);
             }
         }
 
