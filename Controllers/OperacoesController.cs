@@ -53,7 +53,20 @@ namespace TestInvestmentCart.Controllers
         public ActionResult<IEnumerable<OperacaoReadDto>> ListarOperacoes(){
             var operacoes = _repository.ListOperacoes();
             if(operacoes != null && operacoes.Count() > 0){
-                return Ok(_mapper.Map<IEnumerable<OperacaoReadDto>>(operacoes));
+                List<OperacaoReadDto> ListOperacaoReadDto = new List<OperacaoReadDto>();
+                foreach (var o in operacoes)
+                {
+                    var operacao = _mapper.Map<OperacaoReadDto>(o);
+                    var acao = _acaoRepository.GetAcaoById(o.AcaoId);
+
+                    operacao.Acao = acao.Codigo;
+                    operacao.RazaoSocial = acao.RazaoSocial;
+                    operacao.TipoOperacao = (o.StOperacao == 'V' ? "Venda" : "Compra");
+
+                    ListOperacaoReadDto.Add(operacao);
+                }
+
+                return Ok(ListOperacaoReadDto);
             }
             else{
                 return NotFound();  
