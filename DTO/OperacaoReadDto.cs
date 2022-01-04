@@ -2,8 +2,7 @@ namespace TestInvestmentCart.DTO
 {
     public class OperacaoReadDto
     {
-        public int Id { get; set; }
-        public int AcaoId { get; set; }
+        
         public DateTime DtOperacao { get; set; }
         public char StOperacao { get; set; }
         public int QtdOperacao { get; set; }

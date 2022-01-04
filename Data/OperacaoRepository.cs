@@ -15,7 +15,7 @@ namespace TestInvestmentCart.Data
             if(operacao == null){
                 throw new ArgumentNullException(nameof(operacao));
             }
-            
+            operacao.DtOperacao = operacao.DtOperacao.ToUniversalTime();
             _context.Operacoes.Add(operacao);
             
         }
